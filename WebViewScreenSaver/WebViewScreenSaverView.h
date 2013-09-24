@@ -49,15 +49,15 @@
   NSTimer *timer_;
 }
 
-@property (nonatomic, retain) IBOutlet NSWindow *sheet;
-@property (nonatomic, retain) IBOutlet NSTableView *urlList;
-@property (nonatomic, retain) IBOutlet NSTextField *urlsURLField;
-@property (nonatomic, retain) IBOutlet NSButton *fetchURLCheckbox;
+@property (nonatomic, strong) IBOutlet NSWindow *sheet;
+@property (nonatomic, strong) IBOutlet NSTableView *urlList;
+@property (nonatomic, strong) IBOutlet NSTextField *urlsURLField;
+@property (nonatomic, strong) IBOutlet NSButton *fetchURLCheckbox;
 
-@property (nonatomic, retain) NSMutableData *receivedData;
-@property (nonatomic, retain) NSMutableArray *urls;
+@property (nonatomic, strong) NSMutableData *receivedData;
+@property (nonatomic, strong) NSMutableArray *urls;
 @property (nonatomic, copy) NSString *urlsURL;
-@property (nonatomic, retain) NSURLConnection *connection;
+@property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, assign) BOOL shouldFetchURLs;
 
 
