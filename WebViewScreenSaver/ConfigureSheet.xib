@@ -147,7 +147,7 @@
                                 </button>
                                 <button id="o7o-2D-7dF">
                                     <rect key="frame" x="284" y="15" width="107" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="check" title="Random start" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SR9-O1-Fb3">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -156,6 +156,15 @@
                                         <action selector="toggleRandomStart:" target="-2" id="HTx-Jo-kLe"/>
                                     </connections>
                                 </button>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Wko-CF-ne3">
+                                    <rect key="frame" x="342" y="171" width="50" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0s = ∞" id="KSa-oy-5eO">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
                             </subviews>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>

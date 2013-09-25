@@ -194,11 +194,13 @@ static NSString * const kURLTableRow = @"kURLTableRow";
   }
   [webView_ setMainFrameURL:url];  
   [timer_ invalidate];
-  timer_ = [NSTimer scheduledTimerWithTimeInterval:duration
-                                            target:self
-                                          selector:@selector(loadNext:)
-                                          userInfo:nil
-                                           repeats:NO];
+  if(duration>0){
+    timer_ = [NSTimer scheduledTimerWithTimeInterval:duration
+                                              target:self
+                                            selector:@selector(loadNext:)
+                                            userInfo:nil
+                                             repeats:NO];
+  }
 }
 
 - (void)loadNext:(NSTimer *)timer {
@@ -219,11 +221,13 @@ static NSString * const kURLTableRow = @"kURLTableRow";
   }
   [webView_ setMainFrameURL:url];
   [timer_ invalidate];
-  timer_ = [NSTimer scheduledTimerWithTimeInterval:duration
-                                            target:self
-                                          selector:@selector(loadNext:)
-                                          userInfo:nil
-                                           repeats:NO];
+  if(duration>0){
+    timer_ = [NSTimer scheduledTimerWithTimeInterval:duration
+                                              target:self
+                                            selector:@selector(loadNext:)
+                                            userInfo:nil
+                                             repeats:NO];
+  }
   currentIndex_ = nextIndex;
 }
 
