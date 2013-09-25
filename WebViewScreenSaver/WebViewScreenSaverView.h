@@ -33,12 +33,14 @@
   NSTableView *urlList_;
   NSTextField *urlsURLField_;
   NSButton *fetchURLCheckbox_;
+  NSButton *randomStartCheckbox_;
   
   // Options Data
   NSString *urlsURL_;  
   NSMutableArray *urls_;
   NSInteger currentIndex_;
   BOOL shouldFetchURLs_;
+  BOOL randomStart_;
   
   // Fetching URLs
   NSMutableData *receivedData_;
@@ -53,17 +55,20 @@
 @property (nonatomic, strong) IBOutlet NSTableView *urlList;
 @property (nonatomic, strong) IBOutlet NSTextField *urlsURLField;
 @property (nonatomic, strong) IBOutlet NSButton *fetchURLCheckbox;
+@property (nonatomic, strong) IBOutlet NSButton *randomStartCheckbox;
 
 @property (nonatomic, strong) NSMutableData *receivedData;
 @property (nonatomic, strong) NSMutableArray *urls;
 @property (nonatomic, copy) NSString *urlsURL;
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, assign) BOOL shouldFetchURLs;
+@property (nonatomic, assign) BOOL randomStart;
 
 
 - (IBAction)dismissConfigSheet:(id)sender;
 - (IBAction)addRow:(id)sender;
 - (IBAction)removeRow:(id)sender;
 - (IBAction)toggleFetchingURLs:(id)sender;
+- (IBAction)toggleRandomStart:(id)sender;
 
 @end

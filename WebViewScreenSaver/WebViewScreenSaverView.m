@@ -27,6 +27,7 @@ static NSString * const kScreenSaverName = @"WebViewScreenSaver";
 static NSString * const kScreenSaverFetchURLsKey = @"kScreenSaverFetchURLs";  // BOOL
 static NSString * const kScreenSaverURLsURLKey = @"kScreenSaverURLsURL";  // NSString (URL)
 static NSString * const kScreenSaverURLListKey = @"kScreenSaverURLList";  // NSArray of NSDictionary
+static NSString * const kScreenSaverRandomStartKey = @"kScreenSaverRandomStart";  // BOOL
 // Keys for the dictionaries in kScreenSaverURLList.
 static NSString * const kScreenSaverURLKey = @"kScreenSaverURL";
 static NSString * const kScreenSaverTimeKey = @"kScreenSaverTime";
@@ -61,6 +62,7 @@ static NSString * const kURLTableRow = @"kURLTableRow";
 
 @synthesize connection = connection_;
 @synthesize fetchURLCheckbox = fetchURLCheckbox_;
+@synthesize randomStartCheckbox = randomStartCheckbox_;
 @synthesize receivedData = receivedData_;
 @synthesize sheet = sheet_;
 @synthesize shouldFetchURLs = shouldFetchURLs_;
@@ -68,6 +70,7 @@ static NSString * const kURLTableRow = @"kURLTableRow";
 @synthesize urlList = urlList_;
 @synthesize urlsURL = urlsURL_;
 @synthesize urlsURLField = urlsURLField_;
+@synthesize randomStart = randomStart_;
 
 + (BOOL)performGammaFade {
   return YES;
@@ -87,6 +90,7 @@ static NSString * const kURLTableRow = @"kURLTableRow";
     self.urls = [[prefs arrayForKey:kScreenSaverURLListKey] mutableCopy];
     self.urlsURL = [prefs stringForKey:kScreenSaverURLsURLKey];
     self.shouldFetchURLs = [prefs boolForKey:kScreenSaverFetchURLsKey];
+    self.randomStart = [prefs boolForKey:kScreenSaverRandomStartKey];
     
     // If there are no URLs set, add a single default URL entry and save it.
     if (![self.urls count] || ![[self.urls objectAtIndex:0] isKindOfClass:[NSDictionary class]]) {
@@ -138,6 +142,7 @@ static NSString * const kURLTableRow = @"kURLTableRow";
     
     [self.fetchURLCheckbox setIntegerValue:self.shouldFetchURLs];
     [self.urlsURLField setEnabled:self.shouldFetchURLs];
+    [self.randomStartCheckbox setIntegerValue:self.randomStart];
   }
   return sheet_;
 }
@@ -181,7 +186,7 @@ static NSString * const kURLTableRow = @"kURLTableRow";
 - (void)loadFromStart {
   NSTimeInterval duration = kDefaultDuration;
   NSString *url = kScreenSaverDefaultURL;
-  currentIndex_ = 0;
+  currentIndex_ = self.randomStart ? arc4random_uniform(self.urls.count) : 0;
   
   if ([self.urls count] > 0) {
     duration = [self timeIntervalForIndex:currentIndex_];
@@ -423,6 +428,12 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
   [self.urlsURLField setEnabled:self.shouldFetchURLs];
 }
 
+- (IBAction)toggleRandomStart:(id)sender {
+    BOOL currentValue = self.randomStart;
+    self.randomStart = !currentValue;
+    [self.randomStartCheckbox setIntegerValue:self.randomStart];
+}
+
 #pragma mark Focus Overrides
 
 // A bunch of methods that captures all the input events to prevent
@@ -455,6 +466,7 @@ writeRowsWithIndexes:(NSIndexSet *)rowIndexes
   ScreenSaverDefaults *prefs = [ScreenSaverDefaults defaultsForModuleWithName:kScreenSaverName];
   [prefs setObject:self.urls forKey:kScreenSaverURLListKey];
   [prefs setBool:self.shouldFetchURLs forKey:kScreenSaverFetchURLsKey];
+  [prefs setBool:self.randomStart forKey:kScreenSaverRandomStartKey];
   
   self.urlsURL = self.urlsURLField.stringValue;
   if (self.urlsURL.length) {

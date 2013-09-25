@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="WebViewScreenSaverView">
             <connections>
                 <outlet property="fetchURLCheckbox" destination="129" id="131"/>
+                <outlet property="randomStartCheckbox" destination="o7o-2D-7dF" id="bV2-Y3-cec"/>
                 <outlet property="sheet" destination="1" id="60"/>
                 <outlet property="urlList" destination="73" id="81"/>
                 <outlet property="urlsURLField" destination="99" id="128"/>
@@ -142,6 +143,17 @@
                                     </buttonCell>
                                     <connections>
                                         <action selector="toggleFetchingURLs:" target="-2" id="132"/>
+                                    </connections>
+                                </button>
+                                <button id="o7o-2D-7dF">
+                                    <rect key="frame" x="284" y="15" width="107" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Random start" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SR9-O1-Fb3">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="toggleRandomStart:" target="-2" id="HTx-Jo-kLe"/>
                                     </connections>
                                 </button>
                             </subviews>
