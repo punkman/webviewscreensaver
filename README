@@ -22,8 +22,27 @@ Usage
    it.
 4. Open up System Preferences > Desktop and Screen Saver > Screen Saver
 5. Select "WebViewScreenSaver" (It'll be at the bottom of the Screen Savers list.)
-6. Press "Options.." and enter the URLs you would like it to load and the
-   duration they should show for in minutes.
+6. Press "Options.." to setup the screensaver
+
+Options
+-------
+Enter the URLs you would like to load and the duration to display (in seconds).
+A duration of 0 seconds means infinite.
+
+Check "Random start" if you want that the first URL loaded will be chosen random.
+The next URL will be loaded cycling on the list as usual.
+
+Check "Fetch URL Remotely" and enter a URL to JSON data in the textbox.  
+This will download the list of URLs and durations from a remote server.
+For the format of the JSON data refer to the apposite section.
+
+JSON Format
+-----------
+[
+  {"kScreenSaverURL":"http://www.google.com/","kScreenSaverTime":"10"},
+  {"kScreenSaverURL":"http://www.bing.com/","kScreenSaverTime":"5"},
+  {"kScreenSaverURL":"http://www.yahoo.com/","kScreenSaverTime":"5"}
+]
 
 Example URLs
 ------------
