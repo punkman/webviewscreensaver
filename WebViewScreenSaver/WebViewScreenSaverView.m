@@ -310,11 +310,11 @@ static NSString * const kURLTableRow = @"kURLTableRow";
     self.urls = [response mutableCopy];
     [self.urlList reloadData];
     
-    currentIndex_ = -1;
+    currentIndex_ = self.randomStart ? arc4random_uniform(self.urls.count) : -1;
     [self loadNext:nil];
   }
   self.connection = nil;
-  NSLog(@"fetching URLS finished");
+  NSLog(@"fetching URLs finished");
 }
 
 
