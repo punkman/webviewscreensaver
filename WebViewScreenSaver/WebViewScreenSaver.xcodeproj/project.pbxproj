@@ -244,6 +244,7 @@
 				GCC_PREFIX_HEADER = WebViewScreenSaver_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = WebViewScreenSaver;
 				WRAPPER_EXTENSION = saver;
 				ZERO_LINK = YES;
@@ -262,6 +263,7 @@
 				GCC_PREFIX_HEADER = WebViewScreenSaver_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = WebViewScreenSaver;
 				WRAPPER_EXTENSION = saver;
 			};

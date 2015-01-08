@@ -125,7 +125,7 @@ static NSString * const kURLTableRow = @"kURLTableRow";
 
 - (NSWindow *)configureSheet {
   if (!sheet_) {
-    if (![NSBundle loadNibNamed:@"ConfigureSheet" owner:self]) {
+      if (![[NSBundle bundleForClass:[self class]] loadNibNamed:@"ConfigureSheet" owner:self topLevelObjects:nil]) {
       NSLog(@"Unable to load configuration sheet");
     }
     
@@ -154,6 +154,7 @@ static NSString * const kURLTableRow = @"kURLTableRow";
   
   // Create the webview for the screensaver.
   webView_ = [[WebView alloc] initWithFrame:[self bounds]];
+  [webView_ setCustomUserAgent:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/600.2.5 (KHTML, like Gecko) Version/7.1.2 Safari/537.85.11"];
   [webView_ setFrameLoadDelegate:self];
   [webView_ setShouldUpdateWhileOffscreen:YES];
   [webView_ setPolicyDelegate:self];
